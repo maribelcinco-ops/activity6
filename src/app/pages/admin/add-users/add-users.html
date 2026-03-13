@@ -1,0 +1,46 @@
+<div class="container">
+
+<form [formGroup]="registerForm" (ngSubmit)="register()">
+
+<input type="email" placeholder="Email" formControlName="email">
+
+<input type="text" placeholder="usernameReg" formControlName="username">
+
+<input type="password" placeholder="Password" formControlName="password">
+
+<label>Role</label>
+
+<select formControlName="role">
+<option>Student</option>
+<option>Admin</option>
+</select>
+
+<button type="submit">Register</button>
+
+</form>
+
+<p>Already have an account? <a href="#">Login</a></p>
+
+<table>
+
+<thead>
+<tr>
+<th>Username</th>
+<th>Email</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr *ngFor="let u of users">
+<td>{{u.email}}</td>
+<td>{{u.username}}</td>
+</tr>
+
+</tbody>
+
+</table>
+
+<p style="color:red">{{message}}</p>
+
+</div>
