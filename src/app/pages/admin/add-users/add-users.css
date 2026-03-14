@@ -1,7 +1,17 @@
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background-color:#790855;
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
 .container{
 width:350px;
 margin:auto;
-background:#d46fb3;
+background:#d46fb3; 
 padding:30px;
 border-radius:10px;
 color:white;

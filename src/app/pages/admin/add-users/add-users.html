@@ -1,19 +1,50 @@
 <div class="container">
 
+<h2>Register</h2>
+
 <form [formGroup]="registerForm" (ngSubmit)="register()">
 
 <input type="email" placeholder="Email" formControlName="email">
 
-<input type="text" placeholder="usernameReg" formControlName="username">
+<div *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].invalid">
+  <small style="color:red" *ngIf="registerForm.controls['email'].errors?.['required']">
+    Email is required
+  </small>
+  <small style="color:red" *ngIf="registerForm.controls['email'].errors?.['email']">
+    Enter a valid email
+  </small>
+</div>
+
+<input type="text" placeholder="Username" formControlName="username">
+
+<div *ngIf="registerForm.controls['username'].touched && registerForm.controls['username'].invalid">
+  <small style="color:red" *ngIf="registerForm.controls['username'].errors?.['required']">
+    Username is required
+  </small>
+  <small style="color:red" *ngIf="registerForm.controls['username'].errors?.['minlength']">
+    Username must be at least 3 characters
+  </small>
+</div>
 
 <input type="password" placeholder="Password" formControlName="password">
+
+<div *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].invalid">
+  <small style="color:red" *ngIf="registerForm.controls['password'].errors?.['required']">
+    Password is required
+  </small>
+  <small style="color:red" *ngIf="registerForm.controls['password'].errors?.['minlength']">
+    Password must be at least 6 characters
+  </small>
+</div>
 
 <label>Role</label>
 
 <select formControlName="role">
-<option>Student</option>
-<option>Admin</option>
+<option value="Student">Student</option>
+<option value="Admin">Admin</option>
 </select>
+
+<br><br>
 
 <button type="submit">Register</button>
 
@@ -22,7 +53,6 @@
 <p>Already have an account? <a href="#">Login</a></p>
 
 <table>
-
 <thead>
 <tr>
 <th>Username</th>
@@ -31,16 +61,13 @@
 </thead>
 
 <tbody>
-
 <tr *ngFor="let u of users">
-<td>{{u.email}}</td>
 <td>{{u.username}}</td>
+<td>{{u.email}}</td>
 </tr>
-
 </tbody>
-
 </table>
 
-<p style="color:red">{{message}}</p>
+<p style="color:lightgreen">{{message}}</p>
 
 </div>
